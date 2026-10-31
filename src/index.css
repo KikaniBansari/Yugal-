@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #04061A;
+    color: #DFE0FE;
+    min-height: 100vh;
+  }
+}
+
+/* Master Spectrum Gradient */
+.bg-spectrum-gradient {
+  background: linear-gradient(135deg, #FFB800 0%, #FF7A1A 20%, #F2452F 40%, #D6469A 60%, #9B4FB5 80%, #2FA8F0 100%);
+}
+
+.text-spectrum-gradient {
+  background: linear-gradient(135deg, #FFB800 0%, #FF7A1A 20%, #F2452F 40%, #D6469A 60%, #9B4FB5 80%, #2FA8F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-spectrum-gradient {
+  border-image: linear-gradient(135deg, #FFB800 0%, #FF7A1A 20%, #F2452F 40%, #D6469A 60%, #9B4FB5 80%, #2FA8F0 100%) 1;
+}
+
+/* Custom glow shadows */
+.shadow-focal-glow {
+  box-shadow: 0 8px 28px -4px rgba(242, 69, 47, 0.4), 0 0 20px 2px rgba(255, 184, 0, 0.25);
+}
+
+.shadow-gold-halo {
+  box-shadow: 0 12px 32px -8px rgba(255, 184, 0, 0.12), 0 4px 16px -4px rgba(4, 6, 26, 0.8);
+}
+
+.shadow-card-active {
+  box-shadow: 0 0 0 1px rgba(255, 184, 0, 0.35), 0 16px 40px -10px rgba(255, 184, 0, 0.15), 0 8px 24px -4px rgba(4, 6, 26, 0.9);
+}
+
+.shadow-coral-halo {
+  box-shadow: 0 8px 24px rgba(255, 122, 26, 0.28);
+}
+
+/* Ambient backdrop blurs */
+.glass-panel {
+  background-color: rgba(13, 16, 48, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(201, 204, 224, 0.08);
+}
+
+.glass-panel-elevated {
+  background-color: rgba(13, 16, 48, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 184, 0, 0.28);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 204, 224, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 184, 0, 0.3);
+}
+
+/* Reticle scan line animation */
+@keyframes scanSweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(220px);
+    opacity: 0.1;
+  }
+}
+
+.animate-scan-sweep {
+  animation: scanSweep 2.4s ease-in-out infinite;
+}
+
+/* Subtle float animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+/* Ambient glow pulsation */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(1.08);
+  }
+}
+
+.animate-ambient-pulse {
+  animation: ambientPulse 8s ease-in-out infinite;
+}

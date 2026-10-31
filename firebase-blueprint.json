@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile, Reset Box membership status, and settings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 200 },
+        "avatar": { "type": "string", "maxLength": 1000 },
+        "boxCode": { "type": "string", "maxLength": 50 },
+        "isBoxActivated": { "type": "boolean" },
+        "lifePhase": { "type": "string", "maxLength": 50 },
+        "completedChallengesCount": { "type": "number" },
+        "streakDays": { "type": "number" },
+        "lastPracticedDays": { "type": "array" },
+        "savedAffirmationIds": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "name", "boxCode", "isBoxActivated", "completedChallengesCount"]
+    },
+    "UserChallengeProgress": {
+      "title": "UserChallengeProgress",
+      "description": "Progress and completion status for a specific Reset Box challenge",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "challengeId": { "type": "string", "maxLength": 64 },
+        "challengeNumber": { "type": "number" },
+        "phase": { "type": "string", "maxLength": 30 },
+        "status": { "type": "string", "maxLength": 30 },
+        "completedAt": { "type": "string" },
+        "verifiedWithAi": { "type": "boolean" },
+        "aiVerificationNotes": { "type": "string", "maxLength": 1000 },
+        "videoFileName": { "type": "string", "maxLength": 255 }
+      },
+      "required": ["userId", "challengeId", "challengeNumber", "phase", "status"]
+    },
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Private, encrypted somatic reflection entry",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 100 },
+        "time": { "type": "string", "maxLength": 50 },
+        "mood": { "type": "string", "maxLength": 30 },
+        "title": { "type": "string", "maxLength": 200 },
+        "preview": { "type": "string", "maxLength": 300 },
+        "content": { "type": "string", "maxLength": 5000 },
+        "phaseTag": { "type": "string", "maxLength": 30 },
+        "linkedChallengeId": { "type": "string", "maxLength": 64 },
+        "isPrivate": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "mood", "title", "content", "isPrivate"]
+    },
+    "CommunityPost": {
+      "title": "CommunityPost",
+      "description": "Supportive community post in Group Discussion",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string", "maxLength": 128 },
+        "authorName": { "type": "string", "maxLength": 100 },
+        "authorHandle": { "type": "string", "maxLength": 100 },
+        "authorAvatar": { "type": "string", "maxLength": 1000 },
+        "isAnonymous": { "type": "boolean" },
+        "content": { "type": "string", "maxLength": 1000 },
+        "phaseTag": { "type": "string", "maxLength": 30 },
+        "challengeTag": { "type": "string", "maxLength": 100 },
+        "likes": { "type": "number" },
+        "reposts": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["authorId", "authorName", "content", "likes"]
+    },
+    "AiVerification": {
+      "title": "AiVerification",
+      "description": "Record of AI somatic practice verification for uploaded challenge video",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "challengeId": { "type": "string", "maxLength": 64 },
+        "challengeNumber": { "type": "number" },
+        "status": { "type": "string", "maxLength": 30 },
+        "feedback": { "type": "string", "maxLength": 2000 },
+        "confidenceScore": { "type": "number" },
+        "videoName": { "type": "string", "maxLength": 255 },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "challengeId", "challengeNumber", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile document identified by user UID"
+    },
+    "/users/{userId}/challenges/{challengeId}": {
+      "schema": { "$ref": "#/entities/UserChallengeProgress" },
+      "description": "Challenge completion records for user"
+    },
+    "/users/{userId}/journal/{entryId}": {
+      "schema": { "$ref": "#/entities/JournalEntry" },
+      "description": "Encrypted private reflections for user"
+    },
+    "/users/{userId}/aiVerifications/{verificationId}": {
+      "schema": { "$ref": "#/entities/AiVerification" },
+      "description": "AI somatic video verifications for user"
+    },
+    "/communityPosts/{postId}": {
+      "schema": { "$ref": "#/entities/CommunityPost" },
+      "description": "Public community discussion posts"
+    }
+  }
+}

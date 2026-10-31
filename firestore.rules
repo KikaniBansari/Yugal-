@@ -1,0 +1,115 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Primitives
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Validation Helpers
+    function isValidUserProfile(data) {
+      return data.userId is string && data.userId.size() <= 128
+        && data.name is string && data.name.size() <= 100
+        && data.boxCode is string && data.boxCode.size() <= 50
+        && data.isBoxActivated is bool
+        && data.completedChallengesCount is number
+        && data.completedChallengesCount >= 0 && data.completedChallengesCount <= 21;
+    }
+
+    function isValidChallengeProgress(data) {
+      return data.userId is string && data.userId.size() <= 128
+        && data.challengeId is string && data.challengeId.size() <= 64
+        && data.challengeNumber is number && data.challengeNumber >= 1 && data.challengeNumber <= 21
+        && data.phase is string && data.phase.size() <= 30
+        && data.status is string && data.status in ['default', 'in_progress', 'completed'];
+    }
+
+    function isValidJournalEntry(data) {
+      return data.userId is string && data.userId.size() <= 128
+        && data.mood is string && data.mood.size() <= 30
+        && data.title is string && data.title.size() <= 200
+        && data.content is string && data.content.size() <= 5000
+        && data.isPrivate is bool;
+    }
+
+    function isValidCommunityPost(data) {
+      return data.authorId is string && data.authorId == request.auth.uid
+        && data.authorName is string && data.authorName.size() <= 100
+        && data.content is string && data.content.size() <= 1000
+        && data.likes is number && data.likes >= 0;
+    }
+
+    function isValidAiVerification(data) {
+      return data.userId is string && data.userId.size() <= 128
+        && data.challengeId is string && data.challengeId.size() <= 64
+        && data.challengeNumber is number
+        && data.status is string && data.status in ['analyzing', 'verified', 'failed'];
+    }
+
+    // User Profile Document
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUserProfile(incoming()) && incoming().userId == userId;
+      allow update: if isOwner(userId) && isValidUserProfile(incoming()) && incoming().userId == existing().userId;
+      allow delete: if isOwner(userId);
+
+      // User Subcollection: Challenges Progress
+      match /challenges/{challengeId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidChallengeProgress(incoming()) && incoming().userId == userId;
+        allow update: if isOwner(userId) && isValidChallengeProgress(incoming()) && incoming().userId == existing().userId;
+        allow delete: if isOwner(userId);
+      }
+
+      // User Subcollection: Private Journal
+      match /journal/{entryId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidJournalEntry(incoming()) && incoming().userId == userId;
+        allow update: if isOwner(userId) && isValidJournalEntry(incoming()) && incoming().userId == existing().userId;
+        allow delete: if isOwner(userId);
+      }
+
+      // User Subcollection: AI Verifications
+      match /aiVerifications/{verificationId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidAiVerification(incoming()) && incoming().userId == userId;
+        allow update: if isOwner(userId) && isValidAiVerification(incoming()) && incoming().userId == existing().userId;
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // Community Discussion Posts
+    match /communityPosts/{postId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidCommunityPost(incoming());
+      allow update: if isSignedIn() && (
+        // Author can update post content
+        (existing().authorId == request.auth.uid && isValidCommunityPost(incoming()) && incoming().authorId == existing().authorId)
+        // Or other users can increment likes / reposts
+        || (incoming().diff(existing()).affectedKeys().hasOnly(['likes', 'reposts']) && incoming().authorId == existing().authorId)
+      );
+      allow delete: if isSignedIn() && existing().authorId == request.auth.uid;
+    }
+  }
+}

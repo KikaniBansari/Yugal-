@@ -1,0 +1,6 @@
+{
+  "name": "Yugal",
+  "description": "A calm women's wellness companion app for physical Reset Box owners, with QR card challenges, expert guidance, journal, community, and Yugal AI.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

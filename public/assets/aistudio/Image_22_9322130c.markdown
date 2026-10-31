@@ -1,0 +1,213 @@
+---
+name: Ethereal Sanctuary
+colors:
+  surface: '#0f1226'
+  surface-dim: '#0f1226'
+  surface-bright: '#35384e'
+  surface-container-lowest: '#090c21'
+  surface-container-low: '#171a2f'
+  surface-container: '#1b1e33'
+  surface-container-high: '#26283e'
+  surface-container-highest: '#31334a'
+  on-surface: '#dfe0fe'
+  on-surface-variant: '#d5c4ab'
+  inverse-surface: '#dfe0fe'
+  inverse-on-surface: '#2c2f45'
+  outline: '#9e8f78'
+  outline-variant: '#514532'
+  surface-tint: '#ffba20'
+  primary: '#ffdca1'
+  on-primary: '#412d00'
+  primary-container: '#ffb800'
+  on-primary-container: '#6b4c00'
+  inverse-primary: '#7c5800'
+  secondary: '#ffb68e'
+  on-secondary: '#542200'
+  secondary-container: '#eb6b01'
+  on-secondary-container: '#491d00'
+  tertiary: '#c7e4ff'
+  on-tertiary: '#003450'
+  tertiary-container: '#8acbff'
+  on-tertiary-container: '#005681'
+  error: '#ffb4ab'
+  on-error: '#690005'
+  error-container: '#93000a'
+  on-error-container: '#ffdad6'
+  primary-fixed: '#ffdea8'
+  primary-fixed-dim: '#ffba20'
+  on-primary-fixed: '#271900'
+  on-primary-fixed-variant: '#5e4200'
+  secondary-fixed: '#ffdbca'
+  secondary-fixed-dim: '#ffb68e'
+  on-secondary-fixed: '#331200'
+  on-secondary-fixed-variant: '#773300'
+  tertiary-fixed: '#cbe6ff'
+  tertiary-fixed-dim: '#8fcdff'
+  on-tertiary-fixed: '#001e30'
+  on-tertiary-fixed-variant: '#004b71'
+  background: '#0f1226'
+  on-background: '#dfe0fe'
+  surface-variant: '#31334a'
+typography:
+  headline-xl:
+    fontFamily: DM Sans
+    fontSize: 32px
+    fontWeight: '600'
+    lineHeight: 40px
+    letterSpacing: -0.02em
+  headline-lg:
+    fontFamily: DM Sans
+    fontSize: 26px
+    fontWeight: '600'
+    lineHeight: 34px
+    letterSpacing: -0.015em
+  headline-md:
+    fontFamily: DM Sans
+    fontSize: 20px
+    fontWeight: '500'
+    lineHeight: 28px
+    letterSpacing: -0.01em
+  body-lg:
+    fontFamily: DM Sans
+    fontSize: 17px
+    fontWeight: '400'
+    lineHeight: 26px
+    letterSpacing: 0em
+  body-md:
+    fontFamily: DM Sans
+    fontSize: 15px
+    fontWeight: '400'
+    lineHeight: 22px
+    letterSpacing: 0em
+  body-sm:
+    fontFamily: DM Sans
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 18px
+    letterSpacing: 0.01em
+  label-lg:
+    fontFamily: DM Sans
+    fontSize: 14px
+    fontWeight: '600'
+    lineHeight: 18px
+    letterSpacing: 0.02em
+  label-md:
+    fontFamily: DM Sans
+    fontSize: 12px
+    fontWeight: '500'
+    lineHeight: 16px
+    letterSpacing: 0.04em
+  label-sm:
+    fontFamily: DM Sans
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 14px
+    letterSpacing: 0.08em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1rem
+  margin: 1.25rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 1rem
+  space-lg: 1.5rem
+  space-xl: 2.25rem
+---
+
+## Brand & Style
+
+This design system serves as an intimate, contemplative sanctuary companion to a tactile physical ritual box. Anchored by the philosophy of "Harmony held in balance," the digital interface bridges physical mindful action (drawing physical challenge cards, sensory reflection) and serene personal tracking. The visual mood is nocturnal, grounded, and sacred—drawing users away from hyper-stimulating daylight notifications into a focused ritual space.
+
+The aesthetic philosophy fuses **Refined Dark Glassmorphism** with **Luminous Chromatic Accents**:
+- **Atmospheric Nocturne:** A deep midnight canvas creates an intimate, low-distraction visual field suited for morning intention or evening decompressing.
+- **Sacred Geometry & Chromatic Aura:** Softly blended overlapping glowing fields evoke internal equilibrium, meditative breath, and gradual transformation.
+- **Haptic Realism Meets Digital Ease:** Digital components mirror the physical cards' presence through soft micro-borders, tactile card proportions, and warm gold trims, while maintaining effortless touch ergonomics.
+
+## Colors
+
+The palette establishes an emotional gradient ranging from deep somatic stillness to radiant vitality. 
+
+### Core Palette
+- **Base Background:** `#04061A` (Midnight Navy). Total surface canvas delivering profound focus and low blue-light strain.
+- **Elevated Surface:** `#0D1030` (Luminous Indigo/Navy). Primary container, card surface, and sheet tier.
+- **Surface Highlight Border:** `rgba(201, 204, 224, 0.12)`. Ultra-subtle inner borders preventing hard visual breaks.
+- **Primary Accent:** `#FFB800` (Warm Gold). Used for ritual accents, micro-badges, sacred taglines, and active state highlights.
+- **Text Primary:** `#FFFFFF` (Pure White). High-contrast clarity for core reflection prompts and titles.
+- **Text Muted:** `#C9CCE0` (Soft Iris Grey). Secondary guidance, supporting captions, and calm metrics.
+
+### Phase Spectrum Tokens
+Individual thematic phases are assigned discrete atmospheric hues that govern badges, micro-illustrations, and active ritual states:
+- **MOVE (Vitality & Grounding):** `#FF7A1A` (Warm Coral/Orange)
+- **CALM (Stillness & Breath):** `#2FA8F0` (Serene Sky Blue)
+- **FEEL (Somatic Intuition):** `#D6469A` (Gentle Magenta / Rose)
+- **UNDERSTAND (Clarity & Synthesis):** `#9B4FB5` (Deep Violet)
+- **CONNECT (Resonance & Unity):** `#FFB800` (Warm Gold)
+
+### Spectrum Master Gradient
+`linear-gradient(135deg, #FFB800 0%, #FF7A1A 20%, #F2452F 40%, #D6469A 60%, #9B4FB5 80%, #2FA8F0 100%)`
+Reserved strictly for primary journey transitions: the 0–21 challenge progress ring, the scanner target reticle, and the elevated focal action button.
+
+## Typography
+
+The typographic hierarchy relies entirely on **DM Sans** to preserve purity, soft structural geometry, and welcoming clarity. The scale is tuned for slow, mindful reading without dense information packing.
+
+- **Ritual Affirmations & Headlines:** Generous line heights give thoughts breathing room. Headlines avoid rigid black weights, using medium and semi-bold weights to avoid aggressive dominance.
+- **Sacred Phase Badges & Micro-Labels:** Small uppercase labels (`label-sm`) leverage extended letter-spacing (`0.08em`) to mimic artisanal stationery and card embossing.
+- **Copy Restraint:** Paragraphs are clamped to maximum legible lengths with soft grey-white (`#C9CCE0`) tones to reduce retinal glare against the dark midnight canvas.
+
+## Layout & Spacing
+
+The layout is built around mobile-first ergonomics (targeted baseline: iPhone standard 390x844 viewport) expanding into balanced tablet viewports. The system enforces strict cognitive decluttering: **one primary intentional action per screen**.
+
+- **Safe Zones & Margins:** Default lateral canvas margin is 20px (`1.25rem`), providing a protected container that mimics holding a physical card deck.
+- **Vertical Airflow:** Vertical stacking between section groups utilizes `space-xl` (36px / `2.25rem`) to create restful pacing. Content never clusters toward the extremities.
+- **Navigation Anchor:** Bottom navigation maintains a clear 96px bottom clearance (including iOS home indicator safe area), ensuring interactive elements remain comfortably within the thumb's primary arc.
+
+## Elevation & Depth
+
+Visual hierarchy does not use harsh drop shadows; instead, it is articulated through **luminous diffusion**, **frosted darkness**, and **translucent layering**.
+
+- **Base Ambient Layer:** `#04061A` overlaid with two static atmospheric radial blurs (`filter: blur(80px); opacity: 0.15;`) in gold and sky blue to simulate living warmth underneath the UI.
+- **Card Tier 1 (Passive):** Surface `#0D1030` at `92%` opacity, `backdrop-filter: blur(24px)`, framed by a 1px border of `rgba(201, 204, 224, 0.08)`.
+- **Card Tier 2 (Affirmation & Active Focus):** Surface `#0D1030` enhanced with an inner gold hairline trim: `1px solid rgba(255, 184, 0, 0.28)` and a subtle ambient outer halo: `box-shadow: 0 12px 32px -8px rgba(255, 184, 0, 0.08), 0 4px 16px -4px rgba(4, 6, 26, 0.8)`.
+- **Scan/Floating Focal Tier:** Center action button and scanning reticle float with an intense spectrum glow: `box-shadow: 0 8px 28px -4px rgba(242, 69, 47, 0.4), 0 0 20px 2px rgba(255, 184, 0, 0.2)`.
+
+## Shapes
+
+The design uses organic, soft geometry inspired by polished river stones, planetary bodies, and rounded physical challenge cards.
+
+- **Primary Cards & Containers:** Standardized on `20px` to `24px` radius (`rounded-xl` to custom `1.5rem`), matching the smooth corner bevel of the physical Reset Box cards.
+- **Buttons & Interactive Pills:** Main CTAs utilize pill curvature (`9999px`) for fluid touch targets, while interactive list chips use `12px` to `16px`.
+- **Orbicular Motif:** Circular geometry is embedded across the system: radial progress rings, circular step nodes, and lens-style scanner reticles reinforce continuity and wholeness.
+
+## Components
+
+### 1. Primary & Secondary Buttons
+- **Primary Gradient CTA:** Full-width (or contextual min-width 180px), height 54px, pill-shaped (`9999px`). Background is the full Spectrum Gradient with white semi-bold text (`label-lg`). Resting state includes a diffuse radiant shadow (`0 8px 24px rgba(255, 122, 26, 0.28)`). On press: subtle scale transition to `0.98`.
+- **Secondary / Ghost Button:** Height 54px, pill-shaped. Background is transparent or `rgba(13, 16, 48, 0.6)` with a 1px border in `rgba(201, 204, 224, 0.2)`. Text is `#C9CCE0`. Active state warms the border to gold `#FFB800`.
+
+### 2. Physical Affirmation Challenge Cards
+- Proportioned after tarot and intention cards (approx. 3:4 aspect ratio when expanded).
+- Built on `#0D1030` backdrop-blurred substrate with a 1.5px soft gold border (`rgba(255, 184, 0, 0.35)`).
+- Top edge hosts the Phase Category badge; center holds the primary challenge prompt in high-contrast white DM Sans; bottom right holds the discrete QR verification indicator.
+
+### 3. Radial Journey Progress Ring (0–21 Reset Meter)
+- Concentric circular gauge with a stroke width of 6px to 8px.
+- Unfilled track is rendered in `#0D1030` with `rgba(201, 204, 224, 0.1)` outline.
+- Active progress sweep uses the Conic Master Gradient with rounded cap ends and an ambient outer glow matching the latest unlocked phase. Center displays completed count (e.g., `14/21`) with label "CARMS UNLOCKED".
+
+### 4. Five-Tab Navigation Bar & Scan Button
+- **Bar Surface:** Fixed height 64px (plus safe area), floating dock or edge-to-edge docked `#0D1030` with `backdrop-filter: blur(30px)` and top hairline `rgba(201, 204, 224, 0.1)`.
+- **Tabs (4 passive):** Journey, Deck, Breath, Profile. Neutral icons rendered in `#C9CCE0`, active state tinted `#FFB800` with micro-dot indicator below.
+- **Elevated Scan Center Button:** 60px circular button elevated -18px above the nav threshold. Wrapped in the Master Spectrum Gradient with pure white QR/Aperture glyph. Surrounded by a 4px protective midnight ring `#04061A` and dynamic ambient pulse.
+
+### 5. Chips, Inputs & Form Controls
+- **Phase Filter Chips:** Height 34px, rounded-full. Resting state uses `#0D1030` with muted label text. Active state fills with 15% opacity of the respective phase color, solid phase border, and bright phase-colored text.
+- **Reflection Text Inputs:** Framed within `#0D1030` rounded panels (`16px`). Placeholder in `#C9CCE0` at 50% opacity. Focused state transitions border to `#FFB800` with zero layout shift.
+- **Sensory Radio Selectors:** Circular 24px selectors; selected state reveals an inner radiating dot tinted to `#FFB800` enveloped by a soft gold halo.
